@@ -26,10 +26,10 @@ Workers
 配置一个periodic task任务内容 app.tasks.cus_task 用crontab或interval设置每5s执行一次
 
 启动django和celery, 并查看日志
-celery -A Demo worker -l debug
+celery -A celerydemo worker -l debug
 
 # 另一个窗口
-celery -A Demo beat -l debug --max-interval=10  # 每10s扫描一次djcelery任务
+celery -A celerydemo beat -l debug --max-interval=10  # 每10s扫描一次djcelery任务
 
 
 '''
