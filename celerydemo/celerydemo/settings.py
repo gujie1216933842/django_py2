@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import pymysql
 
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,8 +29,8 @@ SECRET_KEY = '3mps$1^bkcc5%rkuv!r5wn+qb)r%%zc2jbaj03fkwxc@yb9^7e'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'app'
-    'djcelery'
+    '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
+    'djcelery'
 ]
 
 MIDDLEWARE = [
@@ -79,8 +83,12 @@ WSGI_APPLICATION = 'celerydemo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'USER': 'root',
+        'PASSWORD': '123',
+        'HOST': '47.97.165.75',
+        'PORT': '3306',
     }
 }
 
