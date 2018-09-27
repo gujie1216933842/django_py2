@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for celerydemo project.
 
@@ -25,7 +26,10 @@ SECRET_KEY = '3mps$1^bkcc5%rkuv!r5wn+qb)r%%zc2jbaj03fkwxc@yb9^7e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'app'
+    'djcelery'
+]
 
 
 # Application definition
@@ -103,9 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -118,3 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BROKER_URL = 'redis://127.0.0.1:6379/0'
+BROKER_TRANSPORT = 'redis'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'  # 数据库调度
